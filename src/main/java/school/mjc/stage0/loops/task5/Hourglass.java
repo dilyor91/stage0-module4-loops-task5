@@ -2,19 +2,19 @@ package school.mjc.stage0.loops.task5;
 
 public class Hourglass {
     public static void printHourglassOfGivenSize(int height) {
-       for(int i=1;i<=height;i++) {
-           for(int j=1;j<=height;j++) {
-               if(i<=j || i >height-j) {
-                   System.out.print("8");
-               } else {
-                   System.out.print(" ");
-               }
-           }
-           System.out.println();
-       }
-    }
-
-    public static void main(String[] args) {
-        printHourglassOfGivenSize(6);
+        boolean isOdd = height % 2 == 0;
+        int halfP = isOdd ? height / 2 : height / 2 + 1;
+        for (int row = 1; row <= height; row++) {
+            for (int col = 1; col <= height; col++) {
+                if (row == 1 || row == height || col == row || col == halfP || col == height - row + 1
+                        || (col > row && col < height - row + 1)
+                        || (row > halfP && col > height - row && col < row)) {
+                    System.out.print(8);
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
     }
 }
